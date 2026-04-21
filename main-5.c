@@ -1,20 +1,21 @@
 /*
 Programme : Produit scalaire de deux vecteurs
-Nom : SD+C - Les fondamentaux – Exercice 1
-Ecrit en formalisme pointeur
+Nom : SD+C - Les fondamentaux â€“ Exercice 1
+Ecrit en formalisme tableau 
+
 Auteurs :
-    1. ABIDI Mawusé Jean-Marie Gédéon (GM)
+    1. ABIDI MawusÃ© Jean-Marie GÃ©dÃ©on (GM)
     2. AKONDO Samihatou (GC)
     3. AKOTSU Yao Aurelien Placide (GM)
     4. AGBOGAN Komaln Marcel (GC)
-    5. BARA Oussonè Bryann (IA&BD)
+    5. BARA OussonÃ¨ Bryann (IA&BD)
     6. ETOH Fortunatus (GM)
     7. TCHA-ZAWA Abdou Moudjib (IA&BD)
     8. TINANKPA Wilfried kodjo (IA&BD)
     9. ZAMNA Mahamat Salim (GM)
 
   IDE : Code::Blocks
-  Date de création : 21/04/2026
+  Date de crÃ©ation : 21/04/2026
   Date de rendu : 21/04/2026
   */
 
@@ -26,7 +27,7 @@ Auteurs :
 #include <locale.h>
 #define NB_ELEM_MAX 100
 
-// Création de la structure étudiant
+// CrÃ©ation de la structure Ã©tudiant
 
 typedef struct renseignement renseignement;
 
@@ -54,11 +55,11 @@ renseignement saisir_informations()
 {
 
     renseignement etudiant;
-    printf("\n\n Entrez le numéro de l'etudiant: ");
+    printf("\n\n Entrez le numÃ©ro de l'etudiant: ");
     scanf("%d", &etudiant.numero);
-    printf("\n Entrez le nom de l'étudiant: ");
+    printf("\n Entrez le nom de l'Ã©tudiant: ");
     scanf("%s", etudiant.nom);
-    printf("\n Entrez le prénom de l'étudiant: ");
+    printf("\n Entrez le prÃ©nom de l'Ã©tudiant: ");
     scanf("%s", etudiant.prenom);
     printf("\n Entrez la note de DST: ");
     scanf("%d", &etudiant.noteDst);
@@ -67,7 +68,7 @@ renseignement saisir_informations()
     return etudiant;
 }
 
-// Procédure pour le calcul des moyennes
+// ProcÃ©dure pour le calcul des moyennes
 
 void calculer_moyenne(renseignement liste_etudiant[nbre_etudiant], int nbre_etudiant)
 {
@@ -96,30 +97,30 @@ void calculer_moyenne(renseignement liste_etudiant[nbre_etudiant], int nbre_etud
 
 }
 
-// Procédure d'affichage des résultats
+// ProcÃ©dure d'affichage des rÃ©sultats
 
 void afficher_resultats(renseignement liste_etudiant[nbre_etudiant],int nbre_etudiant)
 {
     int cnpt;
 
-    printf("\n Voici le résultat des étudiants: ");
+    printf("\n Voici le rÃ©sultat des Ã©tudiants: ");
     float moyGen;
     moyGen = 0;
     for (cnpt = 0 ; cnpt < nbre_etudiant ; cnpt++)
     {
-        printf("\n Informations de l'étudiant %d: ", cnpt+1);
-        printf("\n Numéro: %d", liste_etudiant[cnpt].numero);
+        printf("\n Informations de l'Ã©tudiant %d: ", cnpt+1);
+        printf("\n NumÃ©ro: %d", liste_etudiant[cnpt].numero);
         printf("\n Nom: %s", liste_etudiant[cnpt].nom);
-        printf("\n Prénom: %s",liste_etudiant[cnpt].prenom);
+        printf("\n PrÃ©nom: %s",liste_etudiant[cnpt].prenom);
         printf("\n Note de DST: %d", liste_etudiant[cnpt].noteDst);
         printf("\n Note d'Exam: %d", liste_etudiant[cnpt].noteExam);
         printf("\n Moyenne Brute: %.2f", liste_etudiant[cnpt].moyBrute);
         printf("\n Bonus: % .1f", liste_etudiant[cnpt].bonus);
-        printf("\n Moyenne Définitive: %.2f",liste_etudiant[cnpt].moyDef);
+        printf("\n Moyenne DÃ©finitive: %.2f",liste_etudiant[cnpt].moyDef);
         moyGen += liste_etudiant[cnpt].moyDef;
     }
     moyGen = moyGen / nbre_etudiant;
-    printf("\n La moyenne générale de la classe est %.2f", moyGen );
+    printf("\n La moyenne gÃ©nÃ©rale de la classe est %.2f", moyGen );
 }
 
 // Fontion Principale
@@ -127,7 +128,7 @@ int main()
 {
     setlocale(LC_ALL,"");
 
-    printf("\n Entrez le nombre des étudiants: ");
+    printf("\n Entrez le nombre des Ã©tudiants: ");
     scanf("%d",&nbre_etudiant);
 
     while(nbre_etudiant > NB_ELEM_MAX)
