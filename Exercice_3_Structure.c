@@ -1,6 +1,6 @@
 /*
 Programme : Enregistrement d'étudiants et gestion de notes
-Nom : SD+C - Les fondamentaux – Exercice 3
+Nom : SD+C - Les fondamentaux – Exercice 3 
 Ecrit en formalisme pointeur
 Auteurs :
     1. ABIDI Mawusé Jean-Marie Gédéon (GM)
@@ -42,6 +42,7 @@ Fin
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
 
 //Définition de la structure contenant les informations des étudiants
 typedef struct renseignement renseignement;
@@ -60,24 +61,25 @@ struct renseignement
 //Variable contenant le nombre total des étudiants à enregistrer
  int nbre_etudiant;
 
+
 // Fonction ne prenant aucun paramètre pour la saisie des informations
+
 renseignement *saisir_informations()
 {
     renseignement *liste_etudiant;
     renseignement *cpt;
     int i=0;
-    printf("\n Entrer le nombre d'etudiant: ");
+    printf("\n Entrer le nombre d'étudiant: ");
     scanf("%d",&nbre_etudiant);
     liste_etudiant = (renseignement*)malloc(nbre_etudiant*sizeof(renseignement));
-    
     for (cpt = liste_etudiant; cpt < (liste_etudiant + nbre_etudiant); cpt ++)
     {
-        printf("\n Entrer les informations de l'etudiant %d", i+1);
-        printf("\n\n Entrer le numero de l'etudiant: ");
+        printf("\n Entrer les informations de l'étudiant %d", i+1);
+        printf("\n\n Entrer le numero de l'étudiant: ");
         scanf("%d", &cpt->numero);
-        printf("\n Entrer le nom de l'etudiant: ");
+        printf("\n Entrer le nom de l'étudiant: ");
         scanf("%s", cpt->nom);
-        printf("\n Entrer le prenom de l'etudiant: ");
+        printf("\n Entrer le prenom de l'étudiant: ");
         scanf("%s", cpt->prenom);
         printf("\n Entrer la note de DST: ");
         scanf("%d", &cpt->noteDst);
@@ -88,28 +90,25 @@ renseignement *saisir_informations()
        return liste_etudiant;
 }
 
-//Fonction de calcul de la moyenne brute de chaque étudiant
-void calcul_moyBrute(renseignement*liste_etudiant)
+//Fonction de calcul de la moyenne  de chaque étudiant
+
+void calculer_moyenne(renseignement*liste_etudiant)
 {
     int i=0;
     renseignement *cmpt;
-    
     for (cmpt = liste_etudiant; cmpt < (liste_etudiant+nbre_etudiant); cmpt++)
     {
         cmpt->moyBrute = 0.45* (cmpt->noteDst) + 0.55* (cmpt->noteExam);
-        
         if ((cmpt->moyBrute) < 10)
         {
             (cmpt->moyDef) = (cmpt->moyBrute) + 1;
             (cmpt->bonus) = 1;
         }
-        
         if ((cmpt->moyBrute) < 15 && (cmpt->moyBrute)>10)
         {
             (cmpt->moyDef) = (cmpt->moyBrute) + 0.5;
             (cmpt->bonus) = 0.5;
         }
-        
         if ((cmpt->moyBrute) > 15 )
         {
             (cmpt->moyDef) = (cmpt->moyBrute);
@@ -117,39 +116,46 @@ void calcul_moyBrute(renseignement*liste_etudiant)
         }
             i++;
     }
+
 }
 
 
-//Fonction d'affichage des résultats (moyennes brute et définitive)
+//Fonction d'afficher des résultats (moyennes brute et définitive)
+
 void afficher_resultats(renseignement*liste_etudiant)
 {
     renseignement*cnpt;
     int p =0;
-    printf("\n Voici le resultat des etudiants: ");
-    
+    int moyGen = 0;
+    printf("\n Voici le resultat des étudiants: ");
     for (cnpt = liste_etudiant; cnpt < (liste_etudiant+nbre_etudiant); cnpt++)
     {
         printf("\n Informations de l'etudiant %d: ", p+1);
-        printf("\n Numero: %d", cnpt->numero);
+        printf("\n Numéro: %d", cnpt->numero);
         printf("\n Nom: %s", cnpt->nom);
-        printf("\n Prenom: %s",cnpt->prenom);
+        printf("\n Prénom: %s",cnpt->prenom);
         printf("\n Note de DST: %d", cnpt->noteDst);
         printf("\n Note d'Exam: %d", cnpt->noteExam);
-        printf("\n Moyenne Brute: %f", cnpt->moyBrute);
-        printf("\n Bonus: %f", cnpt->bonus);
-        printf("\n Moyenne Definitive: %f", cnpt->moyDef);
+        printf("\n Moyenne Brute: %.2f", cnpt->moyBrute);
+        printf("\n Bonus: %.1f", cnpt->bonus);
+        printf("\n Moyenne Définitive: %.2f", cnpt->moyDef);
         p++;
+        moyGen += (cnpt->moyDef);
     }
+    moyGen = moyGen / nbre_etudiant;
+    printf("\n La moyenne générale de la classe est %.2f", moyGen );
 }
 
-
 //Fonction principale
+
 int main()
 {
+   setlocale(LC_ALL,"");
+   
    renseignement *table;
    table = (renseignement*)malloc(nbre_etudiant*sizeof(renseignement));
    table = saisir_informations();
-   calcul_moyBrute(table);
+   calculer_moyenne(table);
    afficher_resultats(table);
    return 0;
 }
