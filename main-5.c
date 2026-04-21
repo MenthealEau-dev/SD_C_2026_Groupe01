@@ -1,13 +1,12 @@
 /*
-Programme : Produit scalaire de deux vecteurs
-Nom : SD+C - Les fondamentaux – Exercice 1
-Ecrit en formalisme tableau 
-
+Programme : Gestion des informations des étudiants et de leurs notes
+Nom : C-2022-2023-DST-EPL-LF
+Ecrit en formalisme tableau
 Auteurs :
     1. ABIDI Mawusé Jean-Marie Gédéon (GM)
     2. AKONDO Samihatou (GC)
     3. AKOTSU Yao Aurelien Placide (GM)
-    4. AGBOGAN Komaln Marcel (GC)
+    4. AGBOGAN Komlan Marcel (GC)
     5. BARA Oussonè Bryann (IA&BD)
     6. ETOH Fortunatus (GM)
     7. TCHA-ZAWA Abdou Moudjib (IA&BD)
@@ -15,19 +14,17 @@ Auteurs :
     9. ZAMNA Mahamat Salim (GM)
 
   IDE : Code::Blocks
-  Date de création : 21/04/2026
+  Date de création : 20/04/2026
   Date de rendu : 21/04/2026
   */
 
-  #include <stdio.h>
-  #include <stdlib.h>
-  #include <locale.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
 #define NB_ELEM_MAX 100
 
-// Création de la structure étudiant
+//Définition de la structure contenant les informations des étudiants
 
 typedef struct renseignement renseignement;
 
@@ -45,10 +42,11 @@ struct renseignement
 
 };
 
+//Variable contenant le nombre total des étudiants à enregistrer
 
 int nbre_etudiant;
 
-// Fonction de saisie des informations
+// Fonction ne prenant aucun paramètre pour la saisie des informations
 
 renseignement saisir_informations()
 
@@ -68,7 +66,7 @@ renseignement saisir_informations()
     return etudiant;
 }
 
-// Procédure pour le calcul des moyennes
+//Fonction de calcul de la moyenne  de chaque étudiant
 
 void calculer_moyenne(renseignement liste_etudiant[nbre_etudiant], int nbre_etudiant)
 {
@@ -97,7 +95,8 @@ void calculer_moyenne(renseignement liste_etudiant[nbre_etudiant], int nbre_etud
 
 }
 
-// Procédure d'affichage des résultats
+
+//Fonction d'afficher des résultats (moyennes brute, définitive et moyenne générale)
 
 void afficher_resultats(renseignement liste_etudiant[nbre_etudiant],int nbre_etudiant)
 {
