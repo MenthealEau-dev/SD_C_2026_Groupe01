@@ -1,6 +1,6 @@
 /*
-Programme : Enregistrement d'étudiants et gestion de notes
-Nom : SD+C - Les fondamentaux – Exercice 3 
+Programme : Gestion des informations des étudiants et de leurs notes
+Nom : C-2022-2023-DST-EPL-LF
 Ecrit en formalisme pointeur
 Auteurs :
     1. ABIDI Mawusé Jean-Marie Gédéon (GM)
@@ -45,6 +45,7 @@ Fin
 #include <locale.h>
 
 //Définition de la structure contenant les informations des étudiants
+
 typedef struct renseignement renseignement;
 struct renseignement
 {
@@ -59,6 +60,7 @@ struct renseignement
 };
 
 //Variable contenant le nombre total des étudiants à enregistrer
+
  int nbre_etudiant;
 
 
