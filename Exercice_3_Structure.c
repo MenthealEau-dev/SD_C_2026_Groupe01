@@ -14,7 +14,7 @@ Auteurs :
     9. ZAMNA Mahamat Salim (GM)
 
   IDE : Code::Blocks
-  Date de création : 21/04/2026
+  Date de création : 20/04/2026
   Date de rendu : 21/04/2026
   */
 
@@ -60,9 +60,7 @@ struct renseignement
 //Variable contenant le nombre total des étudiants à enregistrer
  int nbre_etudiant;
 
-
 // Fonction ne prenant aucun paramètre pour la saisie des informations
-
 renseignement *saisir_informations()
 {
     renseignement *liste_etudiant;
@@ -71,6 +69,7 @@ renseignement *saisir_informations()
     printf("\n Entrer le nombre d'etudiant: ");
     scanf("%d",&nbre_etudiant);
     liste_etudiant = (renseignement*)malloc(nbre_etudiant*sizeof(renseignement));
+    
     for (cpt = liste_etudiant; cpt < (liste_etudiant + nbre_etudiant); cpt ++)
     {
         printf("\n Entrer les informations de l'etudiant %d", i+1);
@@ -94,19 +93,23 @@ void calcul_moyBrute(renseignement*liste_etudiant)
 {
     int i=0;
     renseignement *cmpt;
+    
     for (cmpt = liste_etudiant; cmpt < (liste_etudiant+nbre_etudiant); cmpt++)
     {
         cmpt->moyBrute = 0.45* (cmpt->noteDst) + 0.55* (cmpt->noteExam);
+        
         if ((cmpt->moyBrute) < 10)
         {
             (cmpt->moyDef) = (cmpt->moyBrute) + 1;
             (cmpt->bonus) = 1;
         }
+        
         if ((cmpt->moyBrute) < 15 && (cmpt->moyBrute)>10)
         {
             (cmpt->moyDef) = (cmpt->moyBrute) + 0.5;
             (cmpt->bonus) = 0.5;
         }
+        
         if ((cmpt->moyBrute) > 15 )
         {
             (cmpt->moyDef) = (cmpt->moyBrute);
@@ -114,16 +117,16 @@ void calcul_moyBrute(renseignement*liste_etudiant)
         }
             i++;
     }
-
 }
 
 
-//Fonction d'afficher des résultats (moyennes brute et définitive)
+//Fonction d'affichage des résultats (moyennes brute et définitive)
 void afficher_resultats(renseignement*liste_etudiant)
 {
     renseignement*cnpt;
     int p =0;
     printf("\n Voici le resultat des etudiants: ");
+    
     for (cnpt = liste_etudiant; cnpt < (liste_etudiant+nbre_etudiant); cnpt++)
     {
         printf("\n Informations de l'etudiant %d: ", p+1);
@@ -138,6 +141,7 @@ void afficher_resultats(renseignement*liste_etudiant)
         p++;
     }
 }
+
 
 //Fonction principale
 int main()
